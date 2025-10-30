@@ -1,0 +1,76 @@
+/* ProfileSetup.css */
+
+.profile-setup {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-setup__title {
+  text-align: center;
+}
+
+.profile-setup__subtitle {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.profile-setup__alert {
+  margin-bottom: 16px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+}
+
+.form-grid__item {
+  flex: 1 1 100%;
+}
+
+.form-grid__item--half {
+  flex-basis: calc(50% - 12px);
+}
+
+.form-grid__item--full {
+    flex-basis: 100%;
+}
+
+.profile-setup__submit-button-container {
+    width: 100%;
+}
+
+.profile-setup__results {
+  margin-top: 32px;
+  padding: 24px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+.results-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.results-grid__item {
+    flex: 1 1 100%;
+}
+
+.results-grid__item--half {
+  flex-basis: calc(50% - 8px);
+}
+
+.results-grid__item--third {
+  flex-basis: calc(33.333% - 11px);
+}
+
+.results-grid__divider {
+    width: 100%;
+    margin: 8px 0 !important;
+}

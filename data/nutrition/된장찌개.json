@@ -1,0 +1,19 @@
+{
+  "data": {
+    "food_info": {
+      "name": "된장찌개",
+      "nutrition": {
+        "calories": 120.0,
+        "carbohydrates": 6.0,
+        "sugars": 2.0,
+        "protein": 10.0,
+        "fat": 7.0,
+        "saturated_fat": 2.0,
+        "cholesterol": 15.0,
+        "sodium": 700.0,
+        "fiber": 3.0,
+        "g": 200
+      }
+    }
+  }
+}

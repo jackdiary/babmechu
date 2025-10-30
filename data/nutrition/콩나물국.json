@@ -1,0 +1,20 @@
+{
+  "data": {
+    "food_info": {
+      "name": "콩나물국",
+      "nutrition": {
+        "stand": 1,
+        "g": 250.0,
+        "e": 35.8,
+        "cal": 4.2,
+        "sug": 1.1,
+        "fat": 0.8,
+        "pro": 3.5,
+        "na": 780.2,
+        "chol": 0.0,
+        "total_sfa": 0.2,
+        "total_tfa": 0.0
+      }
+    }
+  }
+}

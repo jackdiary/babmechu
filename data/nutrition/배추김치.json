@@ -1,0 +1,20 @@
+{
+  "data": {
+    "food_info": {
+      "name": "배추김치",
+      "nutrition": {
+        "stand": 1,
+        "g": 50.0,
+        "e": 15.8,
+        "cal": 2.1,
+        "sug": 1.8,
+        "fat": 0.3,
+        "pro": 1.2,
+        "na": 520.4,
+        "chol": 0.0,
+        "total_sfa": 0.1,
+        "total_tfa": 0.0
+      }
+    }
+  }
+}

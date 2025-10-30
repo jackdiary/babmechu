@@ -1,0 +1,20 @@
+{
+  "data": {
+    "food_info": {
+      "name": "감자탕",
+      "nutrition": {
+        "stand": 1,
+        "g": 300.0,
+        "e": 280.5,
+        "cal": 15.2,
+        "sug": 3.8,
+        "fat": 12.5,
+        "pro": 18.7,
+        "na": 1250.3,
+        "chol": 45.2,
+        "total_sfa": 4.2,
+        "total_tfa": 0.1
+      }
+    }
+  }
+}

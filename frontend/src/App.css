@@ -1,0 +1,93 @@
+.app-container {
+  background-image: url("./assets/ba.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 1080px;
+  width: 1920px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.main-content {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.logo-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+.heading {
+  word-break: keep-all;
+  text-align: center;
+}
+
+.loading-container {
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.app-bar {
+  width: 100%;
+}
+
+.toolbar {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.main-paper {
+  width: 100%;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.routes-container {
+  margin-top: 32px;
+}
+
+.main-grid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content-grid {
+  width: 100%;
+}
+
+.footer {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+}

@@ -1,0 +1,137 @@
+/* PopularMenuSidebar.css */
+
+.sidebar-card {
+  position: fixed !important;
+  top: 110px;
+  right: 10px;
+  width: 300px;
+  max-height: 800px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Header */
+.sidebar-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebar-card__title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-card__title-icon {
+  color: #1976d2;
+}
+
+.sidebar-card__refresh-button--spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sidebar-card__subtitle {
+  margin-bottom: 16px;
+}
+
+/* Menu Items */
+.menu-item {
+  padding: 12px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.menu-item__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.menu-item__rank {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
+  flex-shrink: 0;
+}
+
+.menu-item__rank--top {
+  background-color: #1976d2;
+  color: white;
+}
+
+.menu-item__details {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-item__name-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.menu-item__name-icon {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  flex-shrink: 0;
+}
+
+.menu-item__name-container .MuiTypography-root {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-item__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-item__category-chip {
+  font-size: 11px !important;
+  height: 20px !important;
+}
+
+.menu-item__trend {
+  font-size: 11px;
+}
+
+.menu-item__trend--up {
+  color: #2e7d32;
+}
+
+.menu-item__trend--down {
+  color: #d32f2f;
+}
+
+/* Footer */
+.sidebar-card__footer-button {
+  margin-top: 16px;
+}
+
+.sidebar-card__info-box {
+  margin-top: 16px;
+  padding: 8px;
+  background-color: #fafafa;
+  border-radius: 4px;
+}

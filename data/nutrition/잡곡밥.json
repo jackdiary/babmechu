@@ -1,0 +1,20 @@
+{
+  "data": {
+    "food_info": {
+      "name": "잡곡밥",
+      "nutrition": {
+        "stand": 1,
+        "g": 200.0,
+        "e": 280.3,
+        "cal": 58.7,
+        "sug": 1.2,
+        "fat": 2.1,
+        "pro": 8.5,
+        "na": 5.2,
+        "chol": 0.0,
+        "total_sfa": 0.5,
+        "total_tfa": 0.0
+      }
+    }
+  }
+}

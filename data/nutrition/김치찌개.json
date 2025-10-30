@@ -1,0 +1,19 @@
+{
+  "data": {
+    "food_info": {
+      "name": "김치찌개",
+      "nutrition": {
+        "calories": 150.0,
+        "carbohydrates": 8.0,
+        "sugars": 3.0,
+        "protein": 12.0,
+        "fat": 9.0,
+        "saturated_fat": 3.0,
+        "cholesterol": 25.0,
+        "sodium": 800.0,
+        "fiber": 2.0,
+        "g": 200
+      }
+    }
+  }
+}

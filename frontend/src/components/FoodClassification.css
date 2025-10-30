@@ -1,0 +1,148 @@
+/* FoodClassification.css */
+
+.food-classification-container {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.main-layout {
+  display: flex;
+  gap: 32px;
+  width: 100%;
+}
+
+.upload-section {
+  width: 500px;
+}
+
+.upload-paper {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.upload-paper:hover {
+  border-color: #1976d2;
+}
+
+.preview-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.preview-image {
+  max-width: 400px;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.preview-reselect-text {
+  margin-top: 8px;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.upload-icon {
+  font-size: 64px;
+  color: #ccc;
+}
+
+.upload-placeholder-title {
+  color: #666;
+}
+
+.analysis-section-wrapper {
+  width: 468px;
+}
+
+.analysis-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.alert-message {
+  margin-bottom: 16px;
+}
+
+.classification-result-box {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.classification-chip {
+  margin: 8px 0 16px 0;
+}
+
+.log-meal-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.recommendation-box {
+  margin-top: 16px;
+}
+
+.recommendation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.action-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.action-button {
+  width: 100%;
+}
+
+.search-field {
+  margin-bottom: 16px;
+}
+
+.food-list-paper {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-no-results {
+  text-align: center;
+  padding: 16px;
+}
