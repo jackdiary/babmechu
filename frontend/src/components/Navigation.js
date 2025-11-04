@@ -9,7 +9,8 @@ import {
   DialogTitle, 
   DialogContent,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Box
 } from '@mui/material';
 import {
   CameraAlt,
@@ -18,7 +19,8 @@ import {
   Person,
   Videocam,
   TrendingUp,
-  Close
+  Close,
+  Home
 } from '@mui/icons-material';
 import PopularMenuSidebar from './PopularMenuSidebar';
 import './Navigation.css';
@@ -69,6 +71,10 @@ const Navigation = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   const handlePopularMenuOpen = () => {
     setIsPopularMenuOpen(true);
   };
@@ -84,21 +90,54 @@ const Navigation = () => {
         className="navigation-container"
       >
         <div className="navigation-wrapper">
+          {/* 모바일용 홈 버튼 */}
+          {isMobile && (
+            <IconButton 
+              onClick={handleLogoClick}
+              className="mobile-home-button"
+              color="primary"
+              size="small"
+            >
+              <Home />
+            </IconButton>
+          )}
+          
           <Tabs
             value={getValueFromPath(location.pathname)}
             onChange={handleChange}
-            scrollButtons="auto"
-            allowScrollButtonsMobile
+            variant={isMobile ? "scrollable" : "standard"}
+            scrollButtons={isMobile ? "auto" : false}
+            allowScrollButtonsMobile={isMobile}
             indicatorColor="primary"
             textColor="primary"
-            centered
+            centered={!isMobile}
             className="navigation-tabs"
           >
-            <Tab icon={<CameraAlt />} label="음식 업로드" />
-            <Tab icon={<Videocam />} label={"(라이브 <예정>)"} />
-            <Tab icon={<Dashboard />} label="대시보드" />
-            <Tab icon={<Restaurant />} label="추천" />
-            <Tab icon={<Person />} label="프로필" />
+            <Tab 
+              icon={<CameraAlt />} 
+              label={isMobile ? "업로드" : "음식 업로드"} 
+              className="nav-tab"
+            />
+            <Tab 
+              icon={<Videocam />} 
+              label={isMobile ? "라이브" : "(라이브 <예정>)"} 
+              className="nav-tab"
+            />
+            <Tab 
+              icon={<Dashboard />} 
+              label={isMobile ? "대시보드" : "대시보드"} 
+              className="nav-tab"
+            />
+            <Tab 
+              icon={<Restaurant />} 
+              label={isMobile ? "추천" : "추천"} 
+              className="nav-tab"
+            />
+            <Tab 
+              icon={<Person />} 
+              label={isMobile ? "프로필" : "프로필"} 
+              className="nav-tab"
+            />
           </Tabs>
           
           {isMobile && (
@@ -106,6 +145,7 @@ const Navigation = () => {
               onClick={handlePopularMenuOpen}
               className="popular-menu-button"
               color="primary"
+              size="small"
             >
               <TrendingUp />
             </IconButton>

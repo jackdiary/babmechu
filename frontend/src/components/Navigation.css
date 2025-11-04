@@ -15,14 +15,35 @@
   position: relative;
 }
 
-.popular-menu-button {
+.mobile-home-button {
   position: absolute !important;
-  right: 8px;
+  left: 4px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  min-width: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.mobile-home-button:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.popular-menu-button {
+  position: absolute !important;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  min-width: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 .popular-menu-button:hover {
@@ -30,20 +51,88 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
 }
 
-@media (max-width: 768px) {
-  .navigation-container {
-    margin: 0 16px 24px 16px;
-    border-radius: 8px;
-  }
-  
-  .navigation-tabs {
-    padding-right: 60px;
-  }
-}
-
+/* 데스크톱 스타일 */
 @media (min-width: 769px) {
   .popular-menu-button {
     display: none !important;
+  }
+  
+  .mobile-home-button {
+    display: none !important;
+  }
+  
+  .navigation-tabs {
+    width: 100%;
+  }
+}
+
+/* 모바일 스타일 */
+@media (max-width: 768px) {
+  .navigation-container {
+    margin: 0 8px 16px 8px;
+    border-radius: 8px;
+    max-width: calc(100% - 16px);
+  }
+  
+  .navigation-wrapper {
+    padding: 0 4px;
+  }
+  
+  .navigation-tabs {
+    padding: 0 44px; /* 양쪽 버튼 공간 확보 */
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  
+  .navigation-tabs::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  
+  /* 모바일 탭 스타일 */
+  .nav-tab {
+    min-width: 60px !important;
+    padding: 6px 8px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .nav-tab .MuiTab-iconWrapper {
+    margin-bottom: 2px !important;
+  }
+  
+  .nav-tab .MuiSvgIcon-root {
+    font-size: 1.2rem !important;
+  }
+  
+  /* 스크롤 버튼 스타일 */
+  .navigation-tabs .MuiTabs-scrollButtons {
+    width: 32px !important;
+    min-width: 32px !important;
+  }
+  
+  .navigation-tabs .MuiTabScrollButton-root {
+    width: 32px !important;
+    min-width: 32px !important;
+    padding: 4px !important;
+  }
+}
+
+/* 매우 작은 화면 (320px 이하) */
+@media (max-width: 320px) {
+  .navigation-container {
+    margin: 0 4px 12px 4px;
+    max-width: calc(100% - 8px);
+  }
+  
+  .nav-tab {
+    min-width: 50px !important;
+    padding: 4px 6px !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .nav-tab .MuiSvgIcon-root {
+    font-size: 1rem !important;
   }
 }
 
@@ -55,4 +144,15 @@
 .navigation-tabs .MuiTabs-indicator {
   height: 4px;
   border-radius: 2px 2px 0 0;
+}
+
+/* 탭 호버 효과 */
+.nav-tab:hover {
+  background-color: rgba(25, 118, 210, 0.04) !important;
+}
+
+/* 활성 탭 스타일 */
+.navigation-tabs .Mui-selected {
+  color: #1976d2 !important;
+  font-weight: 600 !important;
 }

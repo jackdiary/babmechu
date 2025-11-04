@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { Container, AppBar, Toolbar, Typography, Box, Paper, Grid, useMediaQuery, useTheme, createTheme, ThemeProvider } from '@mui/material';
 
 // 컴포넌트 임포트
@@ -13,6 +13,49 @@ import Navigation from './components/Navigation';
 
 // API 서비스
 import { profileService } from './services/api';
+
+// 로고 클릭 컴포넌트 (Router 내부에서 사용)
+const ClickableLogo = ({ isMobile }) => {
+  const navigate = useNavigate();
+  
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
+  return (
+    <img 
+      src="/logo.png" 
+      alt="밥메추 로고" 
+      className="logo-image"
+      onClick={handleLogoClick}
+      style={{
+        width: isMobile ? '80px' : '130px',
+        height: isMobile ? '80px' : '130px',
+        minWidth: isMobile ? '80px' : '130px',
+        minHeight: isMobile ? '80px' : '130px',
+        maxWidth: isMobile ? '80px' : '130px',
+        maxHeight: isMobile ? '80px' : '130px',
+        borderRadius: '50%',
+        objectFit: 'cover',
+        display: 'block',
+        flexShrink: 0,
+        cursor: 'pointer',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.transform = 'scale(1.05)';
+        e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.transform = 'scale(1)';
+        e.target.style.boxShadow = 'none';
+      }}
+    />
+  );
+};
+
+// 빈 LogoComponent (Router 외부에서 사용)
+const LogoComponent = () => null;
 
 // Material-UI 테마 생성 - CSS 우선순위 해결
 const customTheme = createTheme({
@@ -89,6 +132,7 @@ function App() {
         }}
       >
         <Router>
+          <LogoComponent isMobile={isMobile} />
         <Box>
           <AppBar position="static" className="app-bar">
             <Toolbar className="toolbar">
@@ -106,26 +150,11 @@ function App() {
                   minHeight: isMobile ? '80px' : '130px',
                   maxWidth: isMobile ? '80px' : '130px',
                   maxHeight: isMobile ? '80px' : '130px',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  cursor: 'pointer'
                 }}
               >
-                <img 
-                  src="/logo.png" 
-                  alt="밥메추 로고" 
-                  className="logo-image"
-                  style={{
-                    width: isMobile ? '80px' : '130px',
-                    height: isMobile ? '80px' : '130px',
-                    minWidth: isMobile ? '80px' : '130px',
-                    minHeight: isMobile ? '80px' : '130px',
-                    maxWidth: isMobile ? '80px' : '130px',
-                    maxHeight: isMobile ? '80px' : '130px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    flexShrink: 0
-                  }}
-                />
+                <ClickableLogo isMobile={isMobile} />
               </Box>
               
               <Typography variant="h3" component="div" className="heading">
