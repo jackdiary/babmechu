@@ -2,22 +2,22 @@
 
 AI 기반 한국 음식 영양 분석 및 추천 시스템
 
-## 🍽️ 프로젝트 개요
+##  프로젝트 개요
 
 밥메추는 사용자가 업로드한 음식 이미지를 AI로 분석하여 영양 정보를 제공하고, 개인의 영양 상태에 맞는 음식을 추천하는 웹 애플리케이션입니다.
 
 ### 주요 기능
-- 🤖 AI 기반 음식 이미지 인식 (11가지 한국 음식)
-- 📊 개인 맞춤 영양 분석 및 대시보드
-- 🍲 영양 상태 기반 음식 추천
-- 👤 사용자 프로필 관리 (BMR, TDEE 계산)
-- 📱 반응형 웹 인터페이스
+-  AI 기반 음식 이미지 인식 (11가지 한국 음식)
+-  개인 맞춤 영양 분석 및 대시보드
+-  영양 상태 기반 음식 추천
+-  사용자 프로필 관리 (BMR, TDEE 계산)
+-  반응형 웹 인터페이스
 
 ### 지원 음식 (MVP 버전)
 - 감자탕, 삼계탕, 김치찌개, 갈치조림, 곱창전골
 - 김치볶음밥, 잡곡밥, 꿀떡, 시금치나물, 배추김치, 콩나물국
 
-## 🏗️ 프로젝트 구조
+##  프로젝트 구조
 
 ```
 밥메추/
@@ -61,7 +61,7 @@ AI 기반 한국 음식 영양 분석 및 추천 시스템
 └── README.md              # 프로젝트 문서
 ```
 
-## 🛠️ 기술 스택
+##  기술 스택
 
 ### Backend
 - **Framework**: Flask 2.3.3
@@ -77,7 +77,7 @@ AI 기반 한국 음식 영양 분석 및 추천 시스템
 - **HTTP Client**: Axios 1.12.2
 - **Charts**: MUI X-Charts 8.14.1
 
-## 🚀 로컬 개발 환경 설정
+##  로컬 개발 환경 설정
 
 ### 1. 저장소 클론
 ```bash
@@ -119,13 +119,6 @@ npm start
 ### 4. 접속
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:5000
-
-## 🌐 AWS 배포 가이드
-
-### 사전 준비사항
-- AWS 계정
-- 도메인: `jacktest.shop` (준비 완료)
-- AWS CLI 설치 및 구성
 
 ### 배포 아키텍처
 ```
@@ -175,7 +168,7 @@ pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:5000 app:app
 ```
 
-### 5. Nginx 설정 (권장)
+### 5. Nginx 설정
 ```nginx
 server {
     listen 80;
@@ -196,7 +189,7 @@ server {
 }
 ```
 
-## 📋 환경 변수 설정
+##  환경 변수 설정
 
 ### Backend (.env)
 ```env
@@ -222,51 +215,9 @@ REACT_APP_API_URL=https://jacktest.shop/api
 REACT_APP_ENV=production
 ```
 
-## 🔧 개발자가 해야 할 작업
 
-### 1. 도메인 DNS 설정
-```bash
-# Route 53에서 jacktest.shop 도메인의 A 레코드를 EC2 IP로 설정
-# 또는 CloudFront 배포 도메인으로 CNAME 설정
-```
 
-### 2. SSL 인증서 설정
-```bash
-# AWS Certificate Manager에서 jacktest.shop SSL 인증서 발급
-# CloudFront 또는 ALB에 인증서 연결
-```
-
-### 3. 환경별 설정 파일 생성
-```bash
-# .env.production 파일 생성
-# 프로덕션용 데이터베이스 URL, API 키 등 설정
-```
-
-### 4. CI/CD 파이프라인 구성 (선택사항)
-```bash
-# GitHub Actions 또는 AWS CodePipeline 설정
-# 자동 빌드 및 배포 구성
-```
-
-## 🧪 테스트
-
-### Backend 테스트
-```bash
-# API 테스트
-curl -X GET http://localhost:5000/api/health
-
-# 음식 분류 테스트
-curl -X POST http://localhost:5000/api/classify \
-  -F "image=@test_image.jpg"
-```
-
-### Frontend 테스트
-```bash
-cd frontend
-npm test
-```
-
-## 📊 모니터링 및 로깅
+##  모니터링 및 로깅
 
 ### 로그 설정
 - Flask 로그: `/var/log/flask/app.log`
@@ -276,23 +227,6 @@ npm test
 ### 성능 모니터링
 - AWS CloudWatch 메트릭 설정
 - 애플리케이션 성능 모니터링 (APM) 도구 연동
-
-## 🤝 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-
-## 📞 연락처
-
-프로젝트 관련 문의: [이메일 주소]
-프로젝트 링크: [GitHub 저장소 URL]
 
 ---
 
