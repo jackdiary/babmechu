@@ -9,12 +9,14 @@ import {
   Chip,
   IconButton,
   Divider,
-  Button
+  Collapse
 } from '@mui/material';
 import {
   TrendingUp,
   Refresh,
-  Restaurant
+  Restaurant,
+  ExpandMore,
+  ExpandLess
 } from '@mui/icons-material';
 import './PopularMenuSidebar.css';
 
@@ -46,9 +48,10 @@ const FOOD_DATABASE = [
   '김치라면', '신라면', '불닭볶음면', '컵라면', '떡볶이'
 ];
 
-const PopularMenuSidebar = () => {
+const PopularMenuSidebar = ({ isModal = false }) => {
   const [popularMenus, setPopularMenus] = useState([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const getCategoryByFood = (foodName) => {
     const koreanFoods = ['김치찌개', '된장찌개', '부대찌개', '순두부찌개', '감자탕', '삼계탕', '갈비탕', '설렁탕', '냉면', '비빔냉면', '물냉면', '비빔밥', '김치볶음밥', '볶음밥', '잡곡밥', '백미밥', '불고기', '갈비구이', '삼겹살', '목살구이', '닭갈비', '닭볶음탕', '찜닭', '닭강정', '생선구이', '갈치조림', '고등어조림', '동태찌개', '매운탕', '해물탕', '곱창전골', '육개장', '김치', '배추김치', '깍두기', '시금치나물', '콩나물무침', '도라지무침', '고사리나물', '꿀떡', '김치라면', '신라면', '불닭볶음면', '컵라면', '떡볶이'];
@@ -91,69 +94,78 @@ const PopularMenuSidebar = () => {
     }, 500);
   };
 
+  const handleToggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   useEffect(() => {
     setPopularMenus(generateRandomMenus());
   }, []);
 
   return (
-    <Card className="sidebar-card">
+    <Card className={`sidebar-card ${isModal ? 'modal-sidebar' : ''}`}>
       <CardContent>
-        <div className="sidebar-card__header">
-          <div className="sidebar-card__title-container">
+        <div className={`sidebar-card__header ${!isExpanded ? 'sidebar-card__header--collapsed' : ''}`}>
+          <div className="sidebar-card__title-container" onClick={handleToggleExpand} style={{ cursor: 'pointer' }}>
             <TrendingUp className="sidebar-card__title-icon" />
             <Typography variant="h6" fontWeight="bold">실시간 인기 메뉴</Typography>
+            <IconButton size="small" onClick={(e) => { e.stopPropagation(); handleToggleExpand(); }}>
+              {isExpanded ? <ExpandLess /> : <ExpandMore />}
+            </IconButton>
           </div>
-          <IconButton onClick={handleRefresh} disabled={isRefreshing} className={isRefreshing ? 'sidebar-card__refresh-button--spinning' : ''}>
-            <Refresh />
-          </IconButton>
+          {isExpanded && (
+            <IconButton onClick={handleRefresh} disabled={isRefreshing} className={isRefreshing ? 'sidebar-card__refresh-button--spinning' : ''}>
+              <Refresh />
+            </IconButton>
+          )}
         </div>
 
-        <Typography variant="body2" color="text.secondary" className="sidebar-card__subtitle">
-          지금 가장 인기있는 메뉴 TOP 10
-        </Typography>
+        <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+          <Typography variant="body2" color="text.secondary" className="sidebar-card__subtitle">
+            지금 가장 인기있는 메뉴 TOP 10
+          </Typography>
 
-        <List dense>
-          {popularMenus.map((menu, index) => (
-            <Fragment key={`${menu.name}-${index}`}>
-              <ListItem className="menu-item">
-                <div className="menu-item__content">
-                  <div className={ `menu-item__rank ${menu.rank <= 3 ? 'menu-item__rank--top' : ''}` }>
-                    {menu.rank}
-                  </div>
-                  
-                  <div className="menu-item__details">
-                    <div className="menu-item__name-container">
-                      <Restaurant className="menu-item__name-icon" />
-                      <Typography variant="body2" fontWeight="medium">{menu.name}</Typography>
+          <List dense>
+            {popularMenus.map((menu, index) => (
+              <Fragment key={`${menu.name}-${index}`}>
+                <ListItem className="menu-item">
+                  <div className="menu-item__content">
+                    <div className={ `menu-item__rank ${menu.rank <= 3 ? 'menu-item__rank--top' : ''}` }>
+                      {menu.rank}
                     </div>
                     
-                    <div className="menu-item__meta">
-                      <Chip 
-                        label={menu.category}
-                        size="small"
-                        color={getCategoryColor(menu.category)}
-                        className="menu-item__category-chip"
-                      />
-                      <Typography variant="caption" color="text.secondary">인기도 {menu.popularity}</Typography>
-                      <div className={ `menu-item__trend ${menu.trend === 'up' ? 'menu-item__trend--up' : 'menu-item__trend--down'}` }>
-                        {menu.trend === 'up' ? '↗' : '↘'}
+                    <div className="menu-item__details">
+                      <div className="menu-item__name-container">
+                        <Restaurant className="menu-item__name-icon" />
+                        <Typography variant="body2" fontWeight="medium">{menu.name}</Typography>
+                      </div>
+                      
+                      <div className="menu-item__meta">
+                        <Chip 
+                          label={menu.category}
+                          size="small"
+                          color={getCategoryColor(menu.category)}
+                          className="menu-item__category-chip"
+                        />
+                        <Typography variant="caption" color="text.secondary">인기도 {menu.popularity}</Typography>
+                        <div className={ `menu-item__trend ${menu.trend === 'up' ? 'menu-item__trend--up' : 'menu-item__trend--down'}` }>
+                          {menu.trend === 'up' ? '↗' : '↘'}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </ListItem>
-              {index < popularMenus.length - 1 && <Divider />}
-            </Fragment>
-          ))}
-        </List>
+                </ListItem>
+                {index < popularMenus.length - 1 && <Divider />}
+              </Fragment>
+            ))}
+          </List>
 
-
-
-        <Box className="sidebar-card__info-box">
-          <Typography variant="caption" color="text.secondary">
-            💡 실시간으로 업데이트되는 인기 메뉴입니다. 새로고침할 때마다 다른 메뉴가 나타납니다!
-          </Typography>
-        </Box>
+          <Box className="sidebar-card__info-box">
+            <Typography variant="caption" color="text.secondary">
+              💡 실시간으로 업데이트되는 인기 메뉴입니다. 새로고침할 때마다 다른 메뉴가 나타납니다!
+            </Typography>
+          </Box>
+        </Collapse>
       </CardContent>
     </Card>
   );

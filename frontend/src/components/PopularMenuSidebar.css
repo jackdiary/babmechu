@@ -10,6 +10,35 @@
   z-index: 1000;
 }
 
+/* 모달 내부에서 사용될 때 */
+.sidebar-card.modal-sidebar {
+  position: relative !important;
+  top: auto;
+  right: auto;
+  width: 100%;
+  max-height: none;
+  margin: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 1200px) {
+  .sidebar-card {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-card {
+    position: relative !important;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-height: none;
+    margin-top: 24px;
+    display: block;
+  }
+}
+
 /* Header */
 .sidebar-card__header {
   display: flex;
@@ -18,10 +47,22 @@
   margin-bottom: 16px;
 }
 
+.sidebar-card__header--collapsed {
+  margin-bottom: 0;
+}
+
 .sidebar-card__title-container {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.sidebar-card__title-container:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 4px 8px;
 }
 
 .sidebar-card__title-icon {

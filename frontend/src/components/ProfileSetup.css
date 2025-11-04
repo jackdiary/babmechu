@@ -1,11 +1,19 @@
 /* ProfileSetup.css */
 
 .profile-setup {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .profile-setup {
+    padding: 0;
+  }
 }
 
 .profile-setup__title {
@@ -34,6 +42,12 @@
 
 .form-grid__item--half {
   flex-basis: calc(50% - 12px);
+}
+
+@media (max-width: 768px) {
+  .form-grid__item--half {
+    flex-basis: 100%;
+  }
 }
 
 .form-grid__item--full {
@@ -68,6 +82,13 @@
 
 .results-grid__item--third {
   flex-basis: calc(33.333% - 11px);
+}
+
+@media (max-width: 768px) {
+  .results-grid__item--half,
+  .results-grid__item--third {
+    flex-basis: 100%;
+  }
 }
 
 .results-grid__divider {

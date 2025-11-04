@@ -1,13 +1,14 @@
-.app-container {
-  background-image: url("./assets/ba.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 1080px;
-  width: 1920px;
-  margin: 0 auto;
-  position: relative;
+/* 최고 우선순위로 배경 적용 */
+html, body, #root, .app-container {
+  background-image: url("../public/ba.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  position: relative !important;
 }
 
 .app-container::before {
@@ -15,33 +16,78 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: -1;
   pointer-events: none;
 }
 
 .main-content {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 32px;
+  padding: 16px;
 }
 
-.logo-image {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
+@media (min-width: 768px) {
+  .main-content {
+    padding: 32px;
+  }
+}
+
+/* 로고 이미지 강제 크기 고정 */
+.logo-container .logo-image,
+.logo-container img.logo-image,
+img.logo-image,
+.app-container .logo-image,
+.toolbar .logo-image {
+  width: 130px !important;
+  height: 130px !important;
+  min-width: 130px !important;
+  min-height: 130px !important;
+  max-width: 130px !important;
+  max-height: 130px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  flex-basis: auto !important;
+}
+
+@media (max-width: 768px) {
+
+  .logo-container .logo-image,
+  .logo-container img.logo-image,
+  img.logo-image,
+  .app-container .logo-image,
+  .toolbar .logo-image {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+  }
 }
 
 .heading {
   word-break: keep-all;
   text-align: center;
+  font-size: clamp(1.5rem, 4vw, 3rem) !important;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.5rem !important;
+    margin-top: 8px;
+  }
 }
 
 .loading-container {
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,17 +99,56 @@
 }
 
 .toolbar {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  padding: 0 16px;
+  flex-wrap: wrap;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+  }
+}
+
+/* 로고 컨테이너 강제 크기 고정 */
+.logo-container,
+.toolbar .logo-container,
+.app-container .logo-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  width: 130px !important;
+  height: 130px !important;
+  min-width: 130px !important;
+  min-height: 130px !important;
+  max-width: 130px !important;
+  max-height: 130px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+
+  .logo-container,
+  .toolbar .logo-container,
+  .app-container .logo-container {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    min-height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+  }
 }
 
 .main-paper {
@@ -86,8 +171,33 @@
 }
 
 .footer {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 16px;
   text-align: center;
+}
+
+/* Material-UI 스타일 덮어쓰기 */
+.MuiToolbar-root .logo-container {
+  width: 130px !important;
+  height: 130px !important;
+  flex-shrink: 0 !important;
+}
+
+.MuiToolbar-root .logo-container img {
+  width: 130px !important;
+  height: 130px !important;
+}
+
+@media (max-width: 768px) {
+  .MuiToolbar-root .logo-container {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .MuiToolbar-root .logo-container img {
+    width: 80px !important;
+    height: 80px !important;
+  }
 }

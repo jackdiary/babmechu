@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Container, AppBar, Toolbar, Typography, Box, Paper, Grid } from '@mui/material';
+import { Container, AppBar, Toolbar, Typography, Box, Paper, Grid, useMediaQuery, useTheme, createTheme, ThemeProvider } from '@mui/material';
 
 // 컴포넌트 임포트
 import ProfileSetup from './components/ProfileSetup';
@@ -14,10 +14,29 @@ import Navigation from './components/Navigation';
 // API 서비스
 import { profileService } from './services/api';
 
+// Material-UI 테마 생성 - CSS 우선순위 해결
+const customTheme = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundImage: `url("${process.env.PUBLIC_URL}/ba.jpg") !important`,
+          backgroundSize: 'cover !important',
+          backgroundPosition: 'center !important',
+          backgroundRepeat: 'no-repeat !important',
+          backgroundAttachment: 'fixed !important',
+        }
+      }
+    }
+  }
+});
+
 function App() {
   const [hasProfile, setHasProfile] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleRefresh = () => {
     setRefreshTrigger(prev => prev + 1);
@@ -54,17 +73,58 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <Router>
+    <ThemeProvider theme={customTheme}>
+      <div 
+        className="app-container"
+        style={{
+          backgroundImage: `url("${process.env.PUBLIC_URL}/ba.jpg") !important`,
+          backgroundSize: 'cover !important',
+          backgroundPosition: 'center !important',
+          backgroundRepeat: 'no-repeat !important',
+          backgroundAttachment: 'fixed !important',
+          minHeight: '100vh !important',
+          width: '100% !important',
+          margin: '0 auto !important',
+          position: 'relative !important'
+        }}
+      >
+        <Router>
         <Box>
           <AppBar position="static" className="app-bar">
             <Toolbar className="toolbar">
               {/* 로고 이미지 */}
-              <Box className="logo-container">
+              <Box 
+                className="logo-container"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  width: isMobile ? '80px' : '130px',
+                  height: isMobile ? '80px' : '130px',
+                  minWidth: isMobile ? '80px' : '130px',
+                  minHeight: isMobile ? '80px' : '130px',
+                  maxWidth: isMobile ? '80px' : '130px',
+                  maxHeight: isMobile ? '80px' : '130px',
+                  overflow: 'hidden'
+                }}
+              >
                 <img 
                   src="/logo.png" 
                   alt="밥메추 로고" 
                   className="logo-image"
+                  style={{
+                    width: isMobile ? '80px' : '130px',
+                    height: isMobile ? '80px' : '130px',
+                    minWidth: isMobile ? '80px' : '130px',
+                    minHeight: isMobile ? '80px' : '130px',
+                    maxWidth: isMobile ? '80px' : '130px',
+                    maxHeight: isMobile ? '80px' : '130px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    flexShrink: 0
+                  }}
                 />
               </Box>
               
@@ -99,7 +159,7 @@ function App() {
                       {/* PopularMenuSidebar is now outside the main grid to allow for fixed positioning */}
                     </Grid>
                   </Box>
-                  <PopularMenuSidebar />
+                  {!isMobile && <PopularMenuSidebar />}
 
                 </>
               )}
@@ -112,8 +172,9 @@ function App() {
             </Typography>
           </Box>
         </Box>
-      </Router>
-    </div>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -1,9 +1,16 @@
 /* NutritionDashboard.css */
 
 .dashboard {
-  width: 1000px;
+  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .dashboard {
+    padding: 24px;
+  }
 }
 
 .dashboard__header {
@@ -80,6 +87,14 @@
   display: flex;
   gap: 16px;
   width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .dashboard__summary-cards {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 .summary-card {

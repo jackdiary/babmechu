@@ -1,9 +1,16 @@
 /* FoodClassification.css */
 
 .food-classification-container {
-  width: 1000px;
+  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .food-classification-container {
+    padding: 24px;
+  }
 }
 
 .page-title {
@@ -20,10 +27,25 @@
   display: flex;
   gap: 32px;
   width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 
 .upload-section {
-  width: 500px;
+  flex: 1;
+  min-width: 300px;
+}
+
+@media (min-width: 1025px) {
+  .upload-section {
+    max-width: 500px;
+  }
 }
 
 .upload-paper {
@@ -53,10 +75,18 @@
 }
 
 .preview-image {
-  max-width: 400px;
+  max-width: 100%;
   max-height: 300px;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .preview-image {
+    max-height: 200px;
+  }
 }
 
 .preview-reselect-text {
@@ -80,7 +110,14 @@
 }
 
 .analysis-section-wrapper {
-  width: 468px;
+  flex: 1;
+  min-width: 300px;
+}
+
+@media (min-width: 1025px) {
+  .analysis-section-wrapper {
+    max-width: 468px;
+  }
 }
 
 .analysis-section {

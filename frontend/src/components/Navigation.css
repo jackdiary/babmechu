@@ -1,11 +1,50 @@
 /* Navigation.css */
 .navigation-container {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto 24px auto;
   border-radius: 12px;
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.navigation-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.popular-menu-button {
+  position: absolute !important;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.popular-menu-button:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+@media (max-width: 768px) {
+  .navigation-container {
+    margin: 0 16px 24px 16px;
+    border-radius: 8px;
+  }
+  
+  .navigation-tabs {
+    padding-right: 60px;
+  }
+}
+
+@media (min-width: 769px) {
+  .popular-menu-button {
+    display: none !important;
+  }
 }
 
 .navigation-tabs {
